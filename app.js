@@ -52,10 +52,10 @@ app.post('/api/notification/reservation', function (req, res) {
   let fullName = req.body.name;
   let date = req.body.date;
   let concert = req.body.concert;
-  let locuri = req.body.locuri.split(",");
+  let locuri = req.body.locuri.split(";");
   var rand = [];
   var loc = [];
-  for (let i = 0; i < locuri.length; i++) {
+  for (let i = 0; i < locuri.length-1; i++) {
     let aux = locuri[i].split("/");
     rand.push(aux[0]);
     loc.push(aux[1]);
@@ -75,9 +75,9 @@ app.post('/api/notification/reservation', function (req, res) {
         '<h2>Concert: ' + concert + '</h2>' + '<h2>' +
         res + '</h2>'
         +
-        '<h1 style="text-align: center; text-shadow: 2px 2px 5px red;">Than you for your reservation!</h1>' +
+        '<h1 style="text-align: center; text-shadow: 2px 2px 5px red;">Thank you for your reservation!</h1>' +
         '<h2 style="text-align: right;margin-left:100px">Have a nice day, </h2>' +
-        '<h2 style="text-align: right;margin-left:120px;color:#58a185 ;">ConcertNow team </h2>'
+        '<h2 style="text-align: right;margin-left:120px;color:#58a185 ;">ConcertWow team </h2>'
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
